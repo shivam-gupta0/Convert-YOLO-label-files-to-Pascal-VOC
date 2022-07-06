@@ -2,22 +2,22 @@ import glob
 import cv2
 import re
 
-yolo_files = glob.glob("E:\\master_thesis\\project\\vehicle_dataset\\CUSTOM_DATA_yolo//*.txt")
+yolo_files = glob.glob("E:\\project\\vehicle_dataset\\CUSTOM_DATA_yolo//*.txt")
 
-classes_path = open("E:\\master_thesis\\project\\vehicle_dataset\\CUSTOM_DATA_yolo//classes.txt")
+classes_path = open("E:\\project\\vehicle_dataset\\CUSTOM_DATA_yolo//classes.txt")
 class_strng = classes_path.readlines()
 classes = [i.strip() for i in class_strng]
 
 print(classes)
 
 for txt_file in yolo_files:
-    if txt_file != "E:\\master_thesis\\project\\vehicle_dataset\\CUSTOM_DATA_yolo\\classes.txt":
+    if txt_file != "E:\\project\\vehicle_dataset\\CUSTOM_DATA_yolo\\classes.txt":
 
         file_name = txt_file[58:]
         file_name = file_name[:-4]+".jpg"
 
         img_path = txt_file[:-4] + ".jpg"
-        img_path = "E:\\master_thesis\\project\\vehicle_dataset\\custom_data_tf\\"+file_name
+        img_path = "E:\\project\\vehicle_dataset\\custom_data_tf\\"+file_name
 
         img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)
 
@@ -27,7 +27,7 @@ for txt_file in yolo_files:
         file = open(txt_file, "r")
         lines = file.readlines()
 
-        with open("E:\\master_thesis\\project\\vehicle_dataset\\custom_data_tf\\"+str(file_name[:-4])+".xml", 'w') as f:
+        with open("E:\\project\\vehicle_dataset\\custom_data_tf\\"+str(file_name[:-4])+".xml", 'w') as f:
             f.write('<annotation>\n')
             f.write('\t<folder>custom_data_tf</folder>\n')
             f.write('\t<filename>' + str(file_name) + '</filename>\n')
